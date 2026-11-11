@@ -27,10 +27,15 @@ export class RegisterUser {
 
         const passwordData = await this.passwordHasher.hash(user.password);
         debugger;
+
         const userData= new User({
+            indique_su_institucion: user.indique_su_institucion,
             name: user.name,
+            tipo_de_usuario:user.tipo_de_usuario,
+            tipo_genero: user.tipo_genero,
             email: user.email,
-            passwordHash:passwordData
+            passwordHash:passwordData,
+            activo:user.activo,
         });
        console.log("el nombre del from es:" , user.name);
         return await this.userRepository.save(userData);
