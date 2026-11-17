@@ -21,6 +21,7 @@ export class LoginPresenter {
         this.loginUser = loginUser;
         this.registerUser = registerUser;
         this.classPresenter = classPresenter;
+        
     }
 
     async login(credentials) {
