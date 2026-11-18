@@ -9,7 +9,7 @@
  * NO contiene lógica de registro.
  */
 
-export function showRegisterView(container, presenter) { 
+export function showRegisterView(container, presenter) {
     container.innerHTML = `
         <section class="auth-container">
             <div class="auth-card">
@@ -17,34 +17,25 @@ export function showRegisterView(container, presenter) {
                 <header class="auth-header">
                     <h1>Crear cuenta</h1>
                     <p>Regístrate para comenzar</p>
-                </header> 
+                </header>
 
                 <form id="register-form" class="auth-form">
 
-                 <div class="form-group">
-                        <label for="register-institucion">
-                            Nombre institucion
-                        </label>
-                           <div class="form-group">
+                    <div class="form-group">
                         <label for="indique-su-institucion">
-                        indique su institucion
+                            Indique su institución
                         </label>
                         <select id="indique-su-institucion" name="indique_su_institucion" required>
-                            <option value="">Seleccione un tipo</option>
+                            <option value="">Seleccione una institución</option>
                             <option value="institucion educativa san jeronimo">institucion educativa san jeronimo</option>
                             <option value="institucion educativa riosucio">institucion educativa riosucio</option>
                             <option value="institucion educativa san lorenzo">institucion educativa san lorenzo</option>
                             <option value="otro">otro</option>
-                            >
-                          </selelect>
-                        
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="register-name">
-                            Nombre
-                        </label>
-
+                        <label for="register-name">Nombre</label>
                         <input
                             type="text"
                             id="register-name"
@@ -54,38 +45,27 @@ export function showRegisterView(container, presenter) {
                         >
                     </div>
 
-                    
                     <div class="form-group">
-                        <label for="register-tipo de usuario">
-                        tipo de usuario
-                        </label>
+                        <label for="register-tipo-usuario">Tipo de usuario</label>
                         <select id="register-tipo-usuario" name="tipo_de_usuario" required>
-        <option value="">Seleccione un tipo</option>
-        <option value="profesora">profesora / profesor</option>
-        <option value="estudiante">estudiante</option>
-        <option value="rector">rector</option>
-                  >
-                 </select>
-              </div>
-    
-
-
-                            <div class="form-group">
-                        <label for="tipo_genero">
-                        tipo_genero
-                        </label>
-                        <select id="tipo_genero" name="tipo_genero" required>
-        <option value="">Seleccione un tipo</option>
-        <option value="femenino">femenino</option>
-        <option value="masculino">masculino</option>
-    </select>
-</div>
+                            <option value="">Seleccione un tipo</option>
+                            <option value="profesora">profesora / profesor</option>
+                            <option value="estudiante">estudiante</option>
+                            <option value="rector">rector</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
-                        <label for="register-email">
-                            Correo electrónico
-                        </label>
+                        <label for="tipo_genero">Género</label>
+                        <select id="tipo_genero" name="tipo_genero" required>
+                            <option value="">Seleccione un tipo</option>
+                            <option value="femenino">femenino</option>
+                            <option value="masculino">masculino</option>
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="register-email">Correo electrónico</label>
                         <input
                             type="email"
                             id="register-email"
@@ -96,10 +76,7 @@ export function showRegisterView(container, presenter) {
                     </div>
 
                     <div class="form-group">
-                        <label for="register-password">
-                            Contraseña
-                        </label>
-
+                        <label for="register-password">Contraseña</label>
                         <input
                             type="password"
                             id="register-password"
@@ -108,129 +85,105 @@ export function showRegisterView(container, presenter) {
                             required
                         >
                     </div>
+
                     <div class="form-group">
-    <label>
-        <input type="checkbox" id="activo" name="activo" checked>
-        Activo
-    </label>
-</div>                    
+                        <label>
+                            <input type="checkbox" id="activo" name="activo" checked>
+                            Activo
+                        </label>
+                    </div>
 
-
-                    <button
-                        type="submit"
-                        class="button button-primary"
-                    >
+                    <button type="submit" class="button button-primary">
                         Crear cuenta
-                    </button>  
+                    </button>
 
                 </form>
 
                 <div class="auth-footer">
-
                     <p>¿Ya tienes una cuenta?</p>
-
-                    <button
-                        id="show-login"
-                        class="btn btn-success"
-                        type="btn btn-success"
-                    >
+                    <button id="show-login" class="btn btn-success" type="button">
                         Iniciar sesión
                     </button>
-
                 </div>
 
-                <p
-                    id="register-message"
-                    class="form-message"
-                ></p>
+                <p id="register-message" class="form-message"></p>
 
             </div>
-    
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body"
-      <p><strong> nombre institucion</strong><spam id"confirmIE"> </spam> </p>
-      <p><strong> name</strong><spam id"confirmIe"> </spam> </p>
-      <p><strong> tipo_de_usuario</strong><spam id"confirmusuario> </spam> </p>
-      <p><strong> tipo_genero</strong><spam id"confirmgenero"> </spam> </p>
-      <p><strong> email</strong><spam id"confirmemail"> </spam> </p>
-      <p><strong> password</strong><spam id"confirmpassword"> </spam> </p>
-      <p><strong> activo</strong><spam id"confirmactivo"> </spam> </p>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar datos</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Institución: </strong><span id="confirmIE"></span></p>
+                            <p><strong>Nombre: </strong><span id="confirmNombre"></span></p>
+                            <p><strong>Tipo de usuario: </strong><span id="confirmUsuario"></span></p>
+                            <p><strong>Género: </strong><span id="confirmGenero"></span></p>
+                            <p><strong>Email: </strong><span id="confirmEmail"></span></p>
+                            <p><strong>Contraseña: </strong><span id="confirmPassword"></span></p>
+                              <p><strong>Activo: </strong><span id="confirmActivo"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="confirm-register">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     `;
-    const registerForm =
-        document.getElementById("register-form");
+
+    const registerForm = document.getElementById("register-form");
 
     registerForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const formData = new FormData(registerForm);
-        const modaelElemnto = document.getElementById("staticBackdrop");
-        const modal = new bootstrap.Modal(modaelElemnto);
+        const modalElemento = document.getElementById("staticBackdrop");
+        const modal = new bootstrap.Modal(modalElemento);
+
         const userData = {
-            
             indique_su_institucion: formData.get("indique_su_institucion"),
             name: formData.get("name"),
             tipo_de_usuario: formData.get("tipo_de_usuario"),
             tipo_genero: formData.get("tipo_genero"),
             email: formData.get("email"),
             password: formData.get("password"),
-            activo: formData.get("activo"),
-            
-
+            activo: registerForm.activo.checked
         };
 
-        document.getElementById("confirmIE").textContent=userData.indique_su_institucion;
-        document.getElementById("confirnombre").textContent=userData.name;
-        document.getElementById("confirmususario").textContent=userData.tipo_de_usuario;
-        document.getElementById("confirmgenero").textContent=userData.tipo_genero;
-        document.getElementById("confirmemail").textContent=userData.email;
-        document.getElementById("confirmcontraseña").textContent=userData = *****;
-        document.getElementById("confirmestado").textContent=userData.activo;
-        
-        registerForm.dataset.userData =JSON.stringify(user.Data);
+        document.getElementById("confirmIE").textContent = userData.indique_su_institucion;
+        document.getElementById("confirmNombre").textContent = userData.name;
+        document.getElementById("confirmUsuario").textContent = userData.tipo_de_usuario;
+        document.getElementById("confirmGenero").textContent = userData.tipo_genero;
+        document.getElementById("confirmEmail").textContent = userData.email;
+        document.getElementById("confirmPassword").textContent = "********";
+        document.getElementById("confirmActivo").textContent = userData.activo ? "Sí" : "No";
+
+        registerForm.dataset.userData = JSON.stringify(userData);
 
         modal.show();
-
-
     });
-    document.getElementById("show-login");
 
-    const loginButton =
-        document.getElementById("show-login");
+    const loginButton = document.getElementById("show-login");
 
     loginButton.addEventListener("click", () => {
         presenter.showLogin();
     });
-
-
+}
 
 export function showRegisterMessage(message) {
-    const messageElement =
-        document.getElementById("register-message");
+    const messageElement = document.getElementById("register-message");
 
     if (messageElement) {
-          messageElement.container.innerHTML = ` 
-          <div class="alert alert-success" role="alert">
-           A simple success alert—check it out!
-        </div>
-
-
-        }
+        messageElement.innerHTML = `
+            <div class="alert alert-success" role="alert">
+                ${message}
+            </div>
+        `;
+    }
 }

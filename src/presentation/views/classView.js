@@ -12,11 +12,8 @@
 
 let currentPresenter = null;
 
-export function showClassView(
-    container,
-    presenter
-) {
-console.log("Presenter al mostrar la vista:", presenter);
+export function showClassView(container, presenter) {
+
     currentPresenter = presenter;
 
     container.innerHTML = `
@@ -33,17 +30,10 @@ console.log("Presenter al mostrar la vista:", presenter);
 
                 <h2>Registrar clase</h2>
 
-                <form
-                    id="class-form"
-                    class="class-form"
-                >
+                <form id="class-form" class="class-form">
 
                     <div class="form-group">
-
-                        <label for="class-name">
-                            Nombre de la clase
-                        </label>
-
+                        <label for="class-name">Nombre de la clase</label>
                         <input
                             type="text"
                             id="class-name"
@@ -51,15 +41,10 @@ console.log("Presenter al mostrar la vista:", presenter);
                             placeholder="Ej: Matemáticas"
                             required
                         >
-
                     </div>
 
                     <div class="form-group">
-
-                        <label for="class-teacher">
-                            Docente
-                        </label>
-
+                        <label for="class-teacher">Docente</label>
                         <input
                             type="text"
                             id="class-teacher"
@@ -67,40 +52,28 @@ console.log("Presenter al mostrar la vista:", presenter);
                             placeholder="Ej: Carlos Pérez"
                             required
                         >
-
                     </div>
 
                     <div class="form-group">
-
-                        <label for="class-description">
-                            Descripción
-                        </label>
-
+                        <label for="class-description">Descripción</label>
                         <textarea
                             id="class-description"
                             name="description"
                             placeholder="Descripción de la clase"
                         ></textarea>
-
                     </div>
 
                     <div class="form-group">
-
-                        <label for="class-date">
-                            Fecha
-                        </label>
-
+                        <label for="class-date">Fecha</label>
                         <input
                             type="date"
                             id="class-date"
                             name="date"
                             required
                         >
-
                     </div>
 
                     <div class="form-actions">
-
                         <button
                             type="submit"
                             id="class-submit"
@@ -116,15 +89,11 @@ console.log("Presenter al mostrar la vista:", presenter);
                         >
                             Cancelar
                         </button>
-
                     </div>
 
                 </form>
 
-                <p
-                    id="class-message"
-                    class="form-message"
-                ></p>
+                <p id="class-message" class="form-message"></p>
 
             </section>
 
@@ -151,46 +120,28 @@ console.log("Presenter al mostrar la vista:", presenter);
         </section>
     `;
 
-    const form =document.getElementById("class-form");
+    const form = document.getElementById("class-form");
 
-    form.addEventListener("submit",async (event) => {
-            event.preventDefault();
-            const formData =
-                new FormData(form);
-            console.log("Presenter al guardar:", presenter);
-            console.log("Método save:", presenter?.save);
-            const classData = {
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-                name:
-                    formData.get("name"),
+        const formData = new FormData(form);
 
-                teacher:
-                    formData.get("teacher"),
+        const classData = {
+            name: formData.get("name"),
+            teacher: formData.get("teacher"),
+            description: formData.get("description"),
+            date: formData.get("date")
+        };
 
-                description:
-                    formData.get("description"),
+        await presenter.save(classData);
+    });
 
-                date:
-                    formData.get("date")
-            };
+    const cancelButton = document.getElementById("class-cancel");
 
-            await presenter.save(
-                classData
-            );
-        }
-    );
-
-    const cancelButton =
-        document.getElementById(
-            "class-cancel"
-        );
-
-    cancelButton.addEventListener(
-        "click",
-        () => {
-            presenter.clearForm();
-        }
-    );
+    cancelButton.addEventListener("click", () => {
+        presenter.clearForm();
+    });
 
     presenter.loadClasses();
 }
@@ -200,18 +151,16 @@ console.log("Presenter al mostrar la vista:", presenter);
  * Renderizar lista
  */
 
-export function renderClasses(
-    classes,
-    presenter,
-    pending
-) {
+export function renderClasses(classes, presenter, pending) {
 
     const list = document.getElementById("class-list");
     const status = document.getElementById("sync-status");
 
-     status.innerHTML = pending
-        ? "<p>Sincronizando cambios...</p>"
-        : "<p>Todo está sincronizado.</p>";
+    if (status) {
+        status.innerHTML = pending
+            ? "<p>Sincronizando cambios...</p>"
+            : "<p>Todo está sincronizado.</p>";
+    }
 
     if (!list) {
         return;
@@ -235,31 +184,19 @@ export function renderClasses(
 
                 <div class="class-card-content">
 
-                    <h3>
-                        ${escapeHtml(
-                            classItem.name
-                        )}
-                    </h3>
+                    <h3>${escapeHtml(classItem.name)}</h3>
 
                     <p>
                         <strong>Docente:</strong>
-                        ${escapeHtml(
-                            classItem.teacher
-                        )}
+                        ${escapeHtml(classItem.teacher)}
                     </p>
 
                     <p>
                         <strong>Fecha:</strong>
-                        ${escapeHtml(
-                            classItem.date
-                        )}
+                        ${escapeHtml(classItem.date)}
                     </p>
 
-                    <p>
-                        ${escapeHtml(
-                            classItem.description
-                        )}
-                    </p>
+                    <p>${escapeHtml(classItem.description)}</p>
 
                 </div>
 
@@ -291,55 +228,29 @@ export function renderClasses(
     /*
      * Eventos de Editar
      */
-
     list
-        .querySelectorAll(
-            '[data-action="edit"]'
-        )
+        .querySelectorAll('[data-action="edit"]')
         .forEach(button => {
+            button.addEventListener("click", () => {
+                const classItem = classes.find(
+                    item => item.id === button.dataset.id
+                );
 
-            button.addEventListener(
-                "click",
-                async () => {
-
-                    const id =
-                        button.dataset.id;
-
-                    const classItem =
-                        classes.find(
-                            item =>
-                                item.id === id
-                        );
-
-                    if (classItem) {
-
-                        presenter.edit(
-                            classItem
-                        );
-                    }
+                if (classItem) {
+                    presenter.edit(classItem);
                 }
-            );
+            });
         });
 
     /*
      * Eventos de Eliminar
      */
-
     list
-        .querySelectorAll(
-            '[data-action="delete"]'
-        )
+        .querySelectorAll('[data-action="delete"]')
         .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                async () => {
-
-                    await presenter.delete(
-                        button.dataset.id
-                    );
-                }
-            );
+            button.addEventListener("click", async () => {
+                await presenter.delete(button.dataset.id);
+            });
         });
 }
 
@@ -349,29 +260,14 @@ export function renderClasses(
  * durante la edición.
  */
 
-export function fillClassForm(
-    classData
-) {
+export function fillClassForm(classData) {
 
-    document.getElementById(
-        "class-name"
-    ).value = classData.name;
+    document.getElementById("class-name").value = classData.name;
+    document.getElementById("class-teacher").value = classData.teacher;
+    document.getElementById("class-description").value = classData.description;
+    document.getElementById("class-date").value = classData.date;
 
-    document.getElementById(
-        "class-teacher"
-    ).value = classData.teacher;
-
-    document.getElementById(
-        "class-description"
-    ).value = classData.description;
-
-    document.getElementById(
-        "class-date"
-    ).value = classData.date;
-
-    document.getElementById(
-        "class-submit"
-    ).textContent =
+    document.getElementById("class-submit").textContent =
         "Actualizar clase";
 }
 
@@ -380,14 +276,9 @@ export function fillClassForm(
  * Mostrar mensajes
  */
 
-export function showClassMessage(
-    message
-) {
+export function showClassMessage(message) {
 
-    const element =
-        document.getElementById(
-            "class-message"
-        );
+    const element = document.getElementById("class-message");
 
     if (element) {
         element.textContent = message;
