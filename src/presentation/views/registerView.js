@@ -20,52 +20,80 @@ export function showRegisterView(container, presenter) {
                 </header>
 
                 <form id="register-form" class="auth-form">
-
                     <div class="form-group">
-                        <label for="indique-su-institucion">
-                            Indique su institución
+                        <label for="register-institucion">
+                            ingrese el nombre de la Institucion
                         </label>
-                        <select id="indique-su-institucion" name="indique_su_institucion" required>
-                            <option value="">Seleccione una institución</option>
-                            <option value="institucion educativa san jeronimo">institucion educativa san jeronimo</option>
-                            <option value="institucion educativa riosucio">institucion educativa riosucio</option>
-                            <option value="institucion educativa san lorenzo">institucion educativa san lorenzo</option>
-                            <option value="otro">otro</option>
+
+                        <select
+                        
+                            id="register-institucion"
+                            name="institucion"
+                            required
+                            >
+                             <option value=""> Seleccione una institución </option>
+                              <option value="IE-San-Jeronimo">IE San Jeronimo</option>
+                              <option value="IE-lorenzo">IE San Lorenzo</option>
                         </select>
                     </div>
+                 
+
+
 
                     <div class="form-group">
-                        <label for="register-name">Nombre</label>
+                        <label for="register-name">
+                            Nombre
+                        </label>
+
                         <input
                             type="text"
                             id="register-name"
                             name="name"
-                            placeholder="Ingrese su nombre"
+                            placeholder="Tu nombre"
                             required
                         >
                     </div>
-
                     <div class="form-group">
-                        <label for="register-tipo-usuario">Tipo de usuario</label>
-                        <select id="register-tipo-usuario" name="tipo_de_usuario" required>
-                            <option value="">Seleccione un tipo</option>
-                            <option value="profesora">profesora / profesor</option>
-                            <option value="estudiante">estudiante</option>
-                            <option value="rector">rector</option>
-                        </select>
+                        <label for="register-tipo-usuario">
+                           Indique su tipo de usuario
+                        </label>
+
+                            <select
+                             id="register-tipo-usuario"
+                             name="tipo_usuario"
+                             required
+                            >
+                             <option value=""> Seleccione una opción </option>
+                             <option value="estudiante">Estudiante</option>
+                             <option value="profesor">Profesor</option>
+                             </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="tipo_genero">Género</label>
-                        <select id="tipo_genero" name="tipo_genero" required>
-                            <option value="">Seleccione un tipo</option>
-                            <option value="femenino">femenino</option>
-                            <option value="masculino">masculino</option>
-                        </select>
+                        <label for="register-genero">
+                            indique su genero
+                        </label>
+
+                        <select
+                        
+                            id="register-genero"
+                            name="genero"
+                            required
+                        >
+                           <option value=""> Seleccione una opción </option>
+                               <option value="masculino">Masculino</option>
+                               <option value="femenino">Femenino</option>
+                               <option value="no-binario">No binario</option>
+                               <option value="prefiero-no-decirlo">Prefiero no decirlo</option>
+                         </select>
+
                     </div>
 
                     <div class="form-group">
-                        <label for="register-email">Correo electrónico</label>
+                        <label for="register-email">
+                            correo elctronico
+                        </label>
+
                         <input
                             type="email"
                             id="register-email"
@@ -76,7 +104,10 @@ export function showRegisterView(container, presenter) {
                     </div>
 
                     <div class="form-group">
-                        <label for="register-password">Contraseña</label>
+                        <label for="register-password">
+                            Contraseña
+                        </label>
+
                         <input
                             type="password"
                             id="register-password"
@@ -86,104 +117,141 @@ export function showRegisterView(container, presenter) {
                         >
                     </div>
 
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" id="activo" name="activo" checked>
-                            Activo
-                        </label>
-                    </div>
+                <div class="form-group">
+                    <label for="register-activo">
+                     <input
+                     type="checkbox"
+                     id="register-activo"
+                     name="activo"
+                     value="activo"
+                     checked
+                     >
+                     Activo
+                    </label>
+                </div>
 
-                    <button type="submit" class="button button-primary">
-                        Crear cuenta
+                    <button
+                        type="submit"
+                        class="button button-primary"
+                    >
+                        Crear cuenta para el instituto San Jeronimo
                     </button>
 
                 </form>
 
                 <div class="auth-footer">
+
                     <p>¿Ya tienes una cuenta?</p>
-                    <button id="show-login" class="btn btn-success" type="button">
+
+                    <button
+                        id="show-login"
+                        class="btn btn-success"
+                        type="button"
+                    >
                         Iniciar sesión
                     </button>
+
                 </div>
 
-                <p id="register-message" class="form-message"></p>
+                <p
+                    id="register-message"
+                    class="form-message"
+                ></p>
 
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar datos</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar Usuarios title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                         <div class="modal-body">
-                            <p><strong>Institución: </strong><span id="confirmIE"></span></p>
-                            <p><strong>Nombre: </strong><span id="confirmNombre"></span></p>
-                            <p><strong>Tipo de usuario: </strong><span id="confirmUsuario"></span></p>
-                            <p><strong>Género: </strong><span id="confirmGenero"></span></p>
-                            <p><strong>Email: </strong><span id="confirmEmail"></span></p>
-                            <p><strong>Contraseña: </strong><span id="confirmPassword"></span></p>
-                              <p><strong>Activo: </strong><span id="confirmActivo"></span></p>
+                            <p><strong> Institucion Educativa: </strong><spam id="confirmIe"> </spam> </p>
+                            <p><strong> Nombre: </strong><spam id="confirmnombre"> </spam> </p>
+                            <p><strong> Tipo Usuario: </strong><spam id="confirmusuario"> </spam> </p>
+                            <p><strong> Genero: </strong><spam id="confirmgenero"> </spam> </p>
+                            <p><strong> Correo Electronico: </strong><spam id="confirmemail"> </spam> </p>
+                            <p><strong> Password: </strong><spam id="confirmcontraseña"> </spam> </p>
+                            <p><strong> </strong><spam id="confirmestado"> </spam> </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="confirm-register">Confirmar</button>
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" id="btn-confirmar"class="btn btn-primary">confirmar</button>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </section>
     `;
 
-    const registerForm = document.getElementById("register-form");
+    const registerForm =
+        document.getElementById("register-form");
 
     registerForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const formData = new FormData(registerForm);
-        const modalElemento = document.getElementById("staticBackdrop");
-        const modal = new bootstrap.Modal(modalElemento);
+        const modalElement = document.getElementById("staticBackdrop");
+        const modal = new bootstrap.Modal(modalElement);
 
         const userData = {
-            indique_su_institucion: formData.get("indique_su_institucion"),
+            institucion: formData.get("institucion"),
             name: formData.get("name"),
-            tipo_de_usuario: formData.get("tipo_de_usuario"),
-            tipo_genero: formData.get("tipo_genero"),
+            tipo_usuario: formData.get("tipo_usuario"),
+            genero: formData.get("genero"),
             email: formData.get("email"),
             password: formData.get("password"),
-            activo: registerForm.activo.checked
-        };
+            activo: formData.get("activo")
 
-        document.getElementById("confirmIE").textContent = userData.indique_su_institucion;
-        document.getElementById("confirmNombre").textContent = userData.name;
-        document.getElementById("confirmUsuario").textContent = userData.tipo_de_usuario;
-        document.getElementById("confirmGenero").textContent = userData.tipo_genero;
-        document.getElementById("confirmEmail").textContent = userData.email;
-        document.getElementById("confirmPassword").textContent = "********";
-        document.getElementById("confirmActivo").textContent = userData.activo ? "Sí" : "No";
+        };
+        document.getElementById("confirmIe").textContent = userData.institucion;
+        document.getElementById("confirmnombre").textContent = userData.name;
+        document.getElementById("confirmusuario").textContent = userData.tipo_usuario;
+        document.getElementById("confirmgenero").textContent = userData.genero;
+        document.getElementById("confirmemail").textContent = userData.email;
+        document.getElementById("confirmcontraseña").textContent = "****";
+        document.getElementById("confirmestado").textContent = userData.activo;
 
         registerForm.dataset.userData = JSON.stringify(userData);
 
         modal.show();
+
+    
+    });
+    document.getElementById("btn-confirmar").addEventListener("click",() => {
+        const userData = JSON.parse(registerForm.dataset.userData);
+    
+    presenter.register(userData);
+    const modalId = document.getElementById("staticBackdrop");
+    const modal = bootstrap.Modal.getOrCreateInstance(modalId)
+    modal.hide();
+
+
     });
 
-    const loginButton = document.getElementById("show-login");
+    const loginButton =
+        document.getElementById("show-login");
 
     loginButton.addEventListener("click", () => {
         presenter.showLogin();
-    });
+ });
 }
 
-export function showRegisterMessage(message) {
-    const messageElement = document.getElementById("register-message");
+
+export function showRegisterMessage(message, alert= "success") {
+    const messageElement =
+        document.getElementById("register-message");
 
     if (messageElement) {
         messageElement.innerHTML = `
-            <div class="alert alert-success" role="alert">
-                ${message}
-            </div>
-        `;
+        <div class="alert alert-${alert}" role="alert">
+         ${message}
+        </div>
+        `
+
     }
 }
