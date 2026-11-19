@@ -17,9 +17,15 @@ import { GetClasses } from "./domain/useCases/GetClasses.js";
 import { UpdateClass } from "./domain/useCases/UpdateClass.js";
 import { DeleteClass } from "./domain/useCases/DeleteClass.js";
 import { CreateClass } from "./domain/useCases/CreateClass.js";
+import { showhome } from "./presentation/views/home.js";
+import {renderNavbar} from "./presentation/components/navbar.js";
+import { showClassView } from "./presentation/views/classView.js";
+import { showArquiView } from "./presentation/views/arquitectura.js";
+
 
 
 const passwordHasher = new PasswordHasher();
+
 
 //const password = "MiClave123";
 
@@ -33,6 +39,25 @@ const passwordHasher = new PasswordHasher();
 
 const app = document.getElementById("app");
 
+const navbarContainer = document.getElementById("navbar-container");
+
+renderNavbar(navbarContainer, (view) =>{ 
+    switch (view){
+        case "home":
+            showhome(app)
+            break; 
+
+        case "classes": 
+            showClassView(app, classPresenter);
+            break;
+
+        case "arquitectura":
+            console.log("arquitectura"); 
+            showArquiView(app, classPresenter);
+            break;
+        
+    }
+})
 /*
  * Repositorys
  */
